@@ -1,11 +1,8 @@
-
-
 <p id="notice"></p>
 <div class="container">
-<div class="row">
- <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-  
-   <% if @user.errors.any? %>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <% if @user.errors.any? %>
         <div class="alert">
           <ul>
             <% @user.errors.full_messages.each do |message| %>
@@ -16,30 +13,20 @@
           </ul>
         </div>
         <% end %>
-    
-<h2>User info</h2>
-
-<%= form_with model: @user, url: user_path do |f| %>
-  
-  <div class="form-group">
-  <%= f.label :Name %><br>
-   <%= f.text_field :name %>
-  </div>
-      
-  <div class="form-group">
-  <%= f.label :Image %><br>
-  <%= f.file_field :user_image, placeholder: "プロフィール画像", accept: "image/*" %><br>
-  </div>
-  
- <div class="form-group">
-<%= f.label :Introduction %><br>
-<%= f.text_area :introduction %>
-</div>
-
-<div class="form-group">
-<%= f.submit 'Update user',class:"btn btn-secondary" %>
-</div>
-  
-<% end %>
-
-
+          <h2>User info</h2>
+          <%= form_with model: @user, url: user_path do |f| %>
+            <div class="form-group">
+              <%= f.label :Name %><br>
+                <%= f.text_field :name %>
+            </div>
+            <div class="form-group">
+              <%= f.label :Image %><br>
+                <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %><br> </div>
+            <div class="form-group">
+              <%= f.label :Introduction %><br>
+                <%= f.text_area :introduction %>
+            </div>
+            <div class="form-group">
+              <%= f.submit 'Update User',class:"btn btn-secondary" %>
+            </div>
+            <% end %>

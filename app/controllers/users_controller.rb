@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+    
   
   def index
    @users = User.all
@@ -14,12 +14,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user =  User.find(params[:id])
-    if @user == current_user
-            render :edit
-          else
-            redirect_to users_path
-          end
+   @user =  User.find(params[:id])
+    unless @user == current_user
+    redirect_to user_path(current_user.id)
+    end
   end
 
   def update
@@ -32,11 +30,7 @@ class UsersController < ApplicationController
    end
   end
   
-  def destroy
-    @user =  User.find(params[:id])  # データ（レコード）を1件取得
-    @user.destroy  # データ（レコード）を削除
-    redirect :index  # 投稿一覧画面へリダイレクト  
-  end
+  
   
   private
   

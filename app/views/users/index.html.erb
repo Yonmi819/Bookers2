@@ -3,8 +3,8 @@
   <div class="row">
     <div class="col-md-3">
       <script src="https://kit.fontawesome.com/c47b0638d0.js" crossorigin="anonymous"></script>
-        <%= render 'users', user: @user %>
-          <%= render 'books/book', book: @newbook %>
+      <%= render 'users', user: @user %>
+        <%= render 'books/book', book: @newbook %>
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Users</h2>
@@ -27,9 +27,6 @@
               </td>
               <td>
                 <%= link_to "Show", user_path(user.id) %>
-              </td>
-              <td>
-                <%= link_to 'Destroy', users_path(@user.id), class: "btn btn-sm btn-danger" ,method: :delete, data: {confirm:  "本当に削除しますか"} %>
               </td>
             </tr>
             <% end %>
