@@ -18,6 +18,19 @@
         <%= user.introduction %>
       </th>
     </tr>
+    <tr>
+      <th>follows</th>
+      <th>
+        <%= link_to user.followings.count , user_followings_path(user) %>
+      </th>
+    </tr>
+    <tr>
+      <th>followers</th>
+      <th>
+        <%= link_to user.followers.count , user_followers_path(user) %>
+      </th>
+    </tr>
+    
   </tbody>
 </table>
 <div class="row">
@@ -25,4 +38,16 @@
     <%= link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block' do %> <i class="fas fa-user-cog"></i>
       <% end %>
   </td>
+  
+  <td>
+                <% unless current_user == user %>
+                  <% if current_user.followings.include?(user) %>
+                    <%= link_to "フォロー外す",user_relationships_path(user.id), class: "btn btn-primary" , method: :delete %>
+                      <% else %>
+                        <%= link_to "フォロー",user_relationships_path(user.id), class: "btn btn-primary" ,method: :POST %>
+                          <% end %>
+                            <% end %>
+              </td>
+
+  
 </div>
