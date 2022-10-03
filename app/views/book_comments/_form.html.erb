@@ -1,8 +1,9 @@
 <table>
   <tbody>
+    <%= form_with model:[book, book_comment], local: false do |f| %>
     <tr>
       <td>
-        <%= form_with model:[book, book_comment], local: false do |f| %>
+        
           <div class="form-group">
             <%= f.text_area :comment, class: "form-control" ,rows:'3'%>
           </div>
