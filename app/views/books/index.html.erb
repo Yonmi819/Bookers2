@@ -1,7 +1,6 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <script src="https://kit.fontawesome.com/c47b0638d0.js" crossorigin="anonymous"></script>
       <%= render 'users/users', user: @user %>
         <%= render 'book', book: @book %>
     </div>
@@ -30,9 +29,13 @@
               <td>
                 <%= book.body %>
               </td>
-              
+              <td id="favorite_buttons_<%= book.id %>">
+                <%= render "favorites/form", book: book %>
+              </td>
               <td>
-                <p><%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %></p>
+                <p>
+                  <%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %>
+                </p>
               </td>
             </tr>
             <% end %>
